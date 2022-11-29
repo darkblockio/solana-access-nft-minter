@@ -212,6 +212,8 @@ const Home: NextPage = () => {
                 <option>20minutes</option>
                 <option>30minutes</option>
                 <option>60minutes</option>
+                <option>10hours</option>
+                <option>1day</option>
               </select>
             </div>
 
