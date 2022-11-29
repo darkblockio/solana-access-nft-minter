@@ -38,14 +38,18 @@ const Home: NextPage = () => {
   const mintNft = async () => {
     try {
       if (isLoading) return;
-      var rentalDurations = document.getElementById("rental-durations");
+      var rentalDurations = document.getElementById(
+        "rental-durations"
+      ) as HTMLSelectElement;
       const duration =
         rentalDurations?.options[rentalDurations.selectedIndex].text;
 
       if (!contentNft) throw Error("content-nft missing");
       if (!file) throw Error("file missing");
+      if (!duration) throw Error("rental duration missing");
 
       setIsMinting(true);
+
       const mint = await program.mint({
         name,
         description,
@@ -70,7 +74,7 @@ const Home: NextPage = () => {
       setIsMinting(false);
       const nft = await program.get(mint);
       if (nft && nft.metadata && nft.metadata.id) setMintedNft(nft);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
       alert("Error minting NFT! : " + err?.message);
     }
