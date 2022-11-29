@@ -101,7 +101,7 @@ const Home: NextPage = () => {
             alt="sol"
           />
         </div>
-        <h1 className={styles.h1}>Solana Access NFTs Minter</h1>
+        <h1 className='text-red-400 text-sm bg-red-300'>Solanadd Access NFTs Minter</h1>
         <p className={styles.explain}>
           Explore what you can do with thirdweb&rsquo;s brand new{" "}
           <b>
@@ -141,7 +141,7 @@ const Home: NextPage = () => {
                 type="text"
                 onChange={(e) => setContractAddress(e.target.value)}
                 value={contractAddress}
-                placeholder="Collection"
+                placeholder="BVXDJVY9HbQRgCSggZdLM2TG9DFVjMjSASoSZrrXgWBi"
               />
             </div>
             <div>
@@ -155,7 +155,7 @@ const Home: NextPage = () => {
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                placeholder="NFT-Name"
+                placeholder="Buddy 5 Minute Access SITE TEST"
               />
             </div>
             <div>
@@ -168,7 +168,7 @@ const Home: NextPage = () => {
                 }}
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
-                placeholder="NFT-Description"
+                placeholder="Test NFT"
               />
             </div>
             <div>
@@ -193,7 +193,7 @@ const Home: NextPage = () => {
                 }}
                 onChange={(e) => setContentNft(e.target.value)}
                 value={contentNft}
-                placeholder="Content-NFT:Platform"
+                placeholder="FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ:Solana"
               />
             </div>
 
