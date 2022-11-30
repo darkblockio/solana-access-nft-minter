@@ -110,7 +110,7 @@ const Home : NextPage = () => {
 
 <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3">
     <div className="w-full md:w-1/3 px-2 rounded">
-        <Image className="mx-auto mt-8 img-responsive" src="/DARKBLOCKSTER.svg" />
+        <Image className="mx-auto mt-8 img-responsive" src="/DARKBLOCKSTER.svg" alt='Darkblockster' />
     </div>
     <div className="w-full md:w-1/3 px-2 rounded">
         <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl">
