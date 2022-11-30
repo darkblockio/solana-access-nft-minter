@@ -6,6 +6,7 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useProgram } from "@thirdweb-dev/react/solana";
 import LoadSpinner from "./../components/LoadSpinner";
+let moment = require('moment-timezone');
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -80,6 +81,17 @@ const Home: NextPage = () => {
     try {
       if (isLoading) return;
       setIsMinting(true);
+
+      const durationMinutes: object = {
+        "5minutes": 5,
+        "10minutes": 10,
+        "30minutes": 30,
+      }
+
+      const expireDate = moment.tz( new Date(), "America/New_York").add(durationMinutes[duration], 'minutes').format('MM/DD/YYYY HH:mma z');
+      const expireMsg = `Access to the unlockables expires at ${expireDate}.`;
+      description = `${description} ${expireMsg}`;
+
       const mint = await program.mint({
         name,
         description,

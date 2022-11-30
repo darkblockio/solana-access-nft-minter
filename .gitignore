@@ -37,3 +37,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# Editors and IDEs
+.idea
+.vscode/*
+.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.vscode/extensions.json
+!.vscode/*.code-snippets
