@@ -129,14 +129,14 @@ const Home : NextPage = () => {
     <div className="w-full md:w-1/3 px-2 rounded">
         <a
             className="cursor-pointer"
-            href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"><Image className="mx-auto img-responsive" src="/BUDDY.png" />
+            href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"><Image className="mx-auto img-responsive" src="/BUDDY.png" alt='BUDDY NFT' />
         </a>
     </div>
 </div> 
     
 <div className = "w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-3">
     <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-        <Image className="mx-auto img-responsive" src="/5min.jpg" />
+        <Image className="mx-auto img-responsive" src="/5min.jpg" alt='5 Minute Access' />
         <div>
             <button
                 className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
@@ -146,7 +146,7 @@ const Home : NextPage = () => {
         </div>
     </div> 
     <div className = "w-full md:w-1/3 mb-8 px-2 rounded"> 
-        <Image className="mx-auto img-responsive" src="/10min.jpg" /> 
+        <Image className="mx-auto img-responsive" src="/10min.jpg" alt='10 Minute Access' /> 
         <div> 
             <button
                 className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
@@ -156,7 +156,7 @@ const Home : NextPage = () => {
         </div> 
     </div>
     <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-        <Image className="mx-auto img-responsive" src="/30min.jpg" />
+        <Image className="mx-auto img-responsive" src="/30min.jpg" alt='30 Minute Access' />
         <div>
             <button
                 className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
