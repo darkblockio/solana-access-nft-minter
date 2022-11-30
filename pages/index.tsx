@@ -107,7 +107,8 @@ const Home: NextPage = () => {
 <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3">
 	<div className="w-full md:w-1/3 px-2 rounded"><img className="mx-auto mt-8 img-responsive" src="/DARKBLOCKSTER.svg" /></div>
 	<div className="w-full md:w-1/3 px-2 rounded">
-  <p className="text-right ml-5 py-8 text-baseline md:text-lg lg:text-xl">You can rent access to the BUDDY CONTENT NFT unlockables which include a short movie, metaverse ready 3D model, comic book and exclusive concept art.  Select the ACCESS NFT you'd like to mint below.  The NFT owner, creator and marketplace will all receive revenue from this rental.</p>
+  <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl"><a className="cursor-pointer underline" href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ">This is BUDDY.  He's my NFT.</a></p>
+  <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl"> He's really expensive.  BUT ... you can rent access to his unlockables which include a short movie, metaverse ready 3D model, comic book and exclusive concept art.  With Darkblock protocol, I'm able to generate revenue from renting access to BUDDY's content.  The NFT owner, creator and marketplace will all receive revenue from this rental.</p>
   </div>
 	<div className="w-full md:w-1/3 px-2 rounded"><a className="cursor-pointer" href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"><img className="mx-auto img-responsive" src="/BUDDY.png" /></a></div>
 </div>
