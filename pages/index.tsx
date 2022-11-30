@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useProgram } from "@thirdweb-dev/react/solana";
 import LoadSpinner from "./../components/LoadSpinner";
+import useSWR from 'swr';
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -16,6 +17,8 @@ const WalletMultiButtonDynamic = dynamic(
   { ssr: false }
 );
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 const Home: NextPage = () => {
   // Here's how to get the thirdweb SDK instance
   // const sdk = useSDK();
@@ -24,7 +27,7 @@ const Home: NextPage = () => {
   const [contractAddress, setContractAddress] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState<File>();
+  // const [file, setFile] = useState<File>();
   const [contentNft, setContentNft] = useState("");
   const [isMinting, setIsMinting] = useState(false);
 
@@ -34,6 +37,13 @@ const Home: NextPage = () => {
   const isConnected = !!wallet;
 
   const { program, isLoading } = useProgram(contractAddress, "nft-collection");
+
+  const { data, error } = useSWR('/api/staticImage', fetcher);
+  const staticImage = data;
+  const staticImageError = error;
+
+  console.log('static image buffer', staticImage)
+  console.log('static image error', error)
 
   const mintNft = async () => {
     try {
@@ -45,7 +55,7 @@ const Home: NextPage = () => {
         rentalDurations?.options[rentalDurations.selectedIndex].text;
 
       if (!contentNft) throw Error("content-nft missing");
-      if (!file) throw Error("file missing");
+      if (staticImageError) throw Error("file missing");
       if (!duration) throw Error("rental duration missing");
 
       setIsMinting(true);
@@ -53,7 +63,7 @@ const Home: NextPage = () => {
       const mint = await program.mint({
         name,
         description,
-        image: file,
+        image: staticImage,
         properties: [
           {
             trait_type: "content-nft",
@@ -171,18 +181,18 @@ const Home: NextPage = () => {
                 placeholder="NFT-Description"
               />
             </div>
-            <div>
-              <input
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
-                type="file"
-                onChange={(e) => setFile(e.target.files![0])}
-              />
-            </div>
+            {/*<div>*/}
+            {/*  <input*/}
+            {/*    style={{*/}
+            {/*      right: 0,*/}
+            {/*      padding: "0.5rem",*/}
+            {/*      fontSize: "1rem",*/}
+            {/*      width: "100%",*/}
+            {/*    }}*/}
+            {/*    type="file"*/}
+            {/*    onChange={(e) => setFile(e.target.files![0])}*/}
+            {/*  />*/}
+            {/*</div>*/}
             <div>
               <textarea
                 style={{
