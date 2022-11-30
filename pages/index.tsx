@@ -82,14 +82,16 @@ const Home: NextPage = () => {
       if (isLoading) return;
       setIsMinting(true);
 
-      const durationMinutes: object = {
-        "5minutes": 5,
-        "10minutes": 10,
-        "30minutes": 30,
-      }
+      const durationMinutes = [
+        { key: "5minutes", seconds: 5},
+        { key: "10minutes", seconds: 10},
+        { key: "30minutes", seconds: 30},
+      ];
 
-      const expireDate = moment.tz( new Date(), "America/New_York").add(durationMinutes[duration], 'minutes').format('MM/DD/YYYY HH:mma z');
+      const expireTime = durationMinutes.find(timeframe => timeframe.key === duration);
+      const expireDate = moment.tz( new Date(), "America/New_York").add(expireTime?.seconds, 'minutes').format('MM/DD/YYYY HH:mma z');
       const expireMsg = `Access to the unlockables expires at ${expireDate}.`;
+
       description = `${description} ${expireMsg}`;
 
       const mint = await program.mint({
