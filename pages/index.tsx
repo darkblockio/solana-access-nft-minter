@@ -82,151 +82,116 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.iconContainer}>
-          <Image
-            src="/thirdweb.svg"
-            height={75}
-            width={115}
-            style={{
-              objectFit: "contain",
-            }}
-            alt="thirdweb"
-          />
-          <Image
-            width={75}
-            height={75}
-            src="/sol.png"
-            className={styles.icon}
-            alt="sol"
-          />
-        </div>
-        <h1 className={styles.h1}>Solana Access NFTs Minter</h1>
-        <p className={styles.explain}>
-          Explore what you can do with thirdweb&rsquo;s brand new{" "}
-          <b>
-            <a
-              href="https://portal.thirdweb.com/solana"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.lightPurple}
-            >
-              Solana SDK
-            </a>
-          </b>
-          .
-        </p>
+      <script src="https://cdn.tailwindcss.com"></script>
 
-        <div
-          style={{
-            right: 0,
-            padding: "0.5rem",
-            fontSize: "1rem",
-            width: "100%",
-          }}
-        >
-          <WalletMultiButtonDynamic />
+    <nav className="flex-shrink-0 bg-black">
+      <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between">
+          <div className="flex items-center px-2 lg:px-0 xl:w-64">
+            <div className="flex-shrink-0 ml-8">
+              <img
+                className="h-8 w-auto"
+                src="https://app.darkblock.io/images/footericon.svg"
+                alt="Darkblock"
+              />
+            </div>
+            <div className="right-0 absolute">
+              <WalletMultiButtonDynamic className="bg-purple-500 mx-auto" />
+            </div>
+          </div>
         </div>
+      </div>
+    </nav>
 
-        {isConnected && (
+      <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
+<div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3">
+	<div className="w-full md:w-1/3 px-2 rounded"><img className="mx-auto mt-8 img-responsive" src="/DARKBLOCKSTER.svg" /></div>
+	<div className="w-full md:w-1/3 px-2 rounded">
+  <p className="text-right ml-5 py-8 text-baseline md:text-lg lg:text-xl">You can rent access to the BUDDY CONTENT NFT unlockables which include a short movie, metaverse ready 3D model, comic book and exclusive concept art.  Select the ACCESS NFT you'd like to mint below.  The NFT owner, creator and marketplace will all receive revenue from this rental.</p>
+  </div>
+	<div className="w-full md:w-1/3 px-2 rounded"><a className="cursor-pointer" href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"><img className="mx-auto img-responsive" src="/BUDDY.png" /></a></div>
+</div>
+
+
+
+<div className="w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-3">
+	<div className="w-full md:w-1/3 mb-8 px-2 rounded"><img className="mx-auto img-responsive" src="/5min.jpg" />
+  
+  <div>
+    <button className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
+      onClick={mintNft}
+    >
+      Mint Access NFT 5
+    </button>
+  </div> 
+  </div>
+	<div className="w-full md:w-1/3 mb-8 px-2 rounded"><img className="mx-auto img-responsive" src="/10min.jpg" />
+  <div>
+    <button className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
+      onClick={mintNft}
+    >
+      Mint Access NFT 10
+    </button>
+  </div> 
+  </div>
+	<div className="w-full md:w-1/3 mb-8 px-2 rounded"><img className="mx-auto img-responsive" src="/30min.jpg" />
+  <div>
+    <button className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
+      onClick={mintNft}
+    >
+      Mint Access NFT 30
+    </button>
+  </div>   
+  </div>
+</div>
+
+
+
+
+
+
+          {isConnected && (
+            // HERE IS WHERE I BROKE THINGS
           <div>
             <div>
-              <input
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
-                type="text"
+              <input type="hidden"
                 onChange={(e) => setContractAddress(e.target.value)}
                 value={contractAddress}
-                placeholder="Collection"
+                placeholder="BVXDJVY9HbQRgCSggZdLM2TG9DFVjMjSASoSZrrXgWBi"
               />
             </div>
             <div>
-              <input
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
-                type="text"
+              <input type="hidden"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                placeholder="NFT-Name"
+                placeholder="Buddy 5 Minute Unlockables Access"
               />
             </div>
             <div>
-              <textarea
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
+              <textarea className="hidden"
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
-                placeholder="NFT-Description"
+                placeholder="This NFT grants the owner 5 minutes of access to unlockable content associated with the BUDDY CONTENT NFT"
               />
             </div>
             <div>
-              <input
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
-                type="file"
+              <input type="file"
                 onChange={(e) => setFile(e.target.files![0])}
               />
             </div>
             <div>
-              <textarea
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
-                onChange={(e) => setContentNft(e.target.value)}
+              <textarea className="hidden" onChange={(e) => setContentNft(e.target.value)}
                 value={contentNft}
-                placeholder="Content-NFT:Platform"
+                placeholder="FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ:Solana"
               />
             </div>
 
             <div>
-              <select
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                }}
-                id="rental-durations"
-              >
-                <option>5minutes</option>
-                <option>10minutes</option>
-                <option>20minutes</option>
-                <option>30minutes</option>
-                <option>60minutes</option>
-                <option>10hours</option>
-                <option>1day</option>
-              </select>
+              <input type="hidden" id="rental-durations" value="5minutes" />
             </div>
 
             <div>
-              <button
-                style={{
-                  right: 0,
-                  padding: "0.5rem",
-                  fontSize: "1rem",
-                  width: "100%",
-                  backgroundColor: "gold",
-                  marginTop: "2rem",
-                }}
+              <button className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
                 onClick={mintNft}
               >
                 Mint NFT
