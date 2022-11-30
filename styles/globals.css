@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 /* Box sizing rules */
@@ -12,7 +16,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  padding-bottom: 250px;
+  background: url('/darkblockster-bg.jpg') #000000;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -31,10 +35,8 @@ select {
 }
 
 body {
-  background: var(--background-color);
   font-family: "Inter", sans-serif;
   color: var(--white);
-  display: flex;
   margin: 0;
   text-align: center;
 }
