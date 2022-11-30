@@ -10,14 +10,6 @@ import LoadSpinner from "./../components/LoadSpinner";
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
 
-const images = {
-  darkblockster: "/DARKBLOCKSTER.svg",
-  buddynft: "/BUDDY.png",
-  fiveMin: "/5min.jpg",
-  tenMin: "/10min.jpg",
-  thrityMin: "/30min.jpg",
-};
-
 const WalletMultiButtonDynamic = dynamic(
   async () =>
     (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
@@ -147,7 +139,7 @@ const Home: NextPage = () => {
           <div className="w-full md:w-1/3 px-2 rounded">
             <Image
               className="mx-auto mt-8 img-responsive"
-              src={images["darkblockster"]}
+              src="/DARKBLOCKSTER.svg"
               alt="Darkblockster"
               width={680}
               height={400}
