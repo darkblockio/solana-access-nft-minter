@@ -116,13 +116,13 @@ const Home : NextPage = () => {
         <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl">
             <a
                 className="cursor-pointer underline"
-                href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ">This is BUDDY. He's my NFT.</a>
+                href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ">This is BUDDY. He&apos;s my NFT.</a>
         </p>
         <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl">
-            He's really expensive. BUT ... you can rent access to his unlockables which
+            He&apos;s really expensive. BUT ... you can rent access to his unlockables which
             include a short movie, metaverse ready 3D model, comic book and exclusive
-            concept art. With Darkblock protocol, I'm able to generate revenue from renting
-            access to BUDDY's content. The NFT owner, creator and marketplace will all
+            concept art. With Darkblock protocol, I&apos;m able to generate revenue from renting
+            access to BUDDY&apos;s content. The NFT owner, creator and marketplace will all
             receive revenue from this rental.
         </p>
     </div>
