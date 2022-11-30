@@ -96,10 +96,10 @@ const Home : NextPage = () => {
                         <img
                             className="h-8 w-auto"
                             src="https://app.darkblock.io/images/footericon.svg"
-                            alt="Darkblock"/>
+                            alt="Darkblock" />
                     </div>
                     <div className="right-0 absolute">
-                        <WalletMultiButtonDynamic className="bg-purple-500 mx-auto"/>
+                        <WalletMultiButtonDynamic className="bg-purple-500 mx-auto" />
                     </div>
                 </div>
             </div>
@@ -107,10 +107,10 @@ const Home : NextPage = () => {
     </nav>
 
 <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
- 
+
 <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3">
     <div className="w-full md:w-1/3 px-2 rounded">
-        <img className="mx-auto mt-8 img-responsive" src="/DARKBLOCKSTER.svg"/>
+        <Image className="mx-auto mt-8 img-responsive" src="/DARKBLOCKSTER.svg" />
     </div>
     <div className="w-full md:w-1/3 px-2 rounded">
         <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl">
@@ -129,14 +129,14 @@ const Home : NextPage = () => {
     <div className="w-full md:w-1/3 px-2 rounded">
         <a
             className="cursor-pointer"
-            href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"><img className="mx-auto img-responsive" src="/BUDDY.png"/>
+            href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"><Image className="mx-auto img-responsive" src="/BUDDY.png" />
         </a>
     </div>
 </div> 
     
 <div className = "w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-3">
     <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-        <img className="mx-auto img-responsive" src="/5min.jpg" />
+        <Image className="mx-auto img-responsive" src="/5min.jpg" />
         <div>
             <button
                 className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
@@ -146,7 +146,7 @@ const Home : NextPage = () => {
         </div>
     </div> 
     <div className = "w-full md:w-1/3 mb-8 px-2 rounded"> 
-        <img className="mx-auto img-responsive" src="/10min.jpg"/> 
+        <Image className="mx-auto img-responsive" src="/10min.jpg" /> 
         <div> 
             <button
                 className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
@@ -156,7 +156,7 @@ const Home : NextPage = () => {
         </div> 
     </div>
     <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-        <img className="mx-auto img-responsive" src="/30min.jpg" />
+        <Image className="mx-auto img-responsive" src="/30min.jpg" />
         <div>
             <button
                 className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
@@ -182,7 +182,7 @@ const Home : NextPage = () => {
     type="hidden"
     onChange={(e) => setName(e.target.value)}
     value={name}
-    placeholder="Buddy 5 Minute Unlockables Access"/> </div>
+    placeholder="Buddy 5 Minute Unlockables Access" /> </div>
         <div>
             <textarea className="hidden"
             onChange={(e) => setDescription(e.target.value)}
@@ -193,7 +193,7 @@ const Home : NextPage = () => {
             <textarea className="hidden" onChange={(e) => setContentNft(e.target.value)}
             value={contentNft}
             placeholder="FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ:Solana"
-            / > </div> <div> <input type="hidden" id="rental-durations" value="5minutes"/> </div>
+            / > </div> <div> <input type="hidden" id="rental-durations" value="5minutes" /> </div>
 
         <div>
             <button className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
