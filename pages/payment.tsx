@@ -142,9 +142,12 @@ const Home: NextPage = () => {
   const CROSS_MINT_30MIN_CLIENT_ID = "7f8dd232-3f2f-4d7a-a8de-ffdebf16eb83";
 
   // dev
-  // const CROSS_MINT_CLIENT_ID = "33ddd25f-7b60-4bf5-8eb9-dc0af2404e58";
-  // const CROSS_MINT_CLIENT_ID = "33ddd25f-7b60-4bf5-8eb9-dc0af2404e58";
-  // const CROSS_MINT_CLIENT_ID = "33ddd25f-7b60-4bf5-8eb9-dc0af2404e58";
+  // ** you'd need to deploy contract with nfts on dev-net
+  // ** create collection for it on staging.crossmint.io
+  // ** use the client-id here
+  // ** change the environment for CrossmintPayButton to staging
+  // ** can use the 4242 4242 4242 4242 card for dummy payments
+  // const CROSS_MINT_STAGING_CLIENT_ID = "33ddd25f-7b60-4bf5-8eb9-dc0af2404e58";
 
   return (
     <>
