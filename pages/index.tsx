@@ -149,34 +149,16 @@ const Home: NextPage = () => {
       </nav>
 
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-        <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3">
+        <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3 justify-center items-center">
           <div className="w-full md:w-1/3 px-2 rounded">
             <Image
-              className="mx-auto mt-8 img-responsive"
+              className="mx-auto mt-0 mb-8 md:mt-8 md:mb-0"
               src="/DARKBLOCKSTER.svg"
               alt="Darkblockster"
-              width={680}
-              height={400}
+              width={400}
+              height={300}
               layout="responsive"
             />
-          </div>
-          <div className="w-full md:w-1/3 px-2 rounded">
-            <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl">
-              <a
-                className="cursor-pointer underline"
-                href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"
-              >
-                This is BUDDY. He&apos;s my NFT.
-              </a>
-            </p>
-            <p className="text-right ml-5 py-4 text-baseline md:text-lg lg:text-xl">
-              He&apos;s really expensive. BUT ... you can rent access to his
-              unlockables which include a short movie, metaverse ready 3D model,
-              comic book and exclusive concept art. With Darkblock protocol,
-              I&apos;m able to generate revenue from renting access to
-              BUDDY&apos;s content. The NFT owner, creator and marketplace will
-              all receive revenue from this rental.
-            </p>
           </div>
           <div className="w-full md:w-1/3 px-2 rounded">
             <a
@@ -193,6 +175,10 @@ const Home: NextPage = () => {
               />
             </a>
           </div>
+          <div className="w-full md:w-1/3 px-2 py-4 rounded align-middle">
+            <h2 className="text-2xl lg:text-3xl underline mb-4 text-right font-serif text-purple-500">Special Promotion</h2>
+            <p className="text-xl lg:text-2xl text-right">Rent access to exclusive BUDDY content.  Enjoy a short film, metaverse 3D model, comic book and concept art.</p>
+          </div>          
         </div>
         <div className="w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-3">
           <div className="w-full md:w-1/3 mb-8 px-2 rounded">
@@ -258,12 +244,12 @@ const Home: NextPage = () => {
               fontSize: "1rem",
               width: "100%",
               display: "inline-block",
-              textAlign: "center",
+              textAlign: "left",
               wordWrap: "normal",
             }}
           >
             <div>
-              <label placeholder="Minted">
+              <label className="bg-gray-900 text-gray-400 text-left" placeholder="Minted">
                 Minted-NFt : {JSON.stringify(mintedNft)}
               </label>
             </div>
