@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background: url('/darkblockster-bg.jpg') #000000;
+  background: url('/darkblockster-bg.jpg') #000000 100% 100%;
 }
 
 /* Inherit fonts for inputs and buttons */
