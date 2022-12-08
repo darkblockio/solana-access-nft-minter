@@ -6,7 +6,9 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useProgram } from "@thirdweb-dev/react/solana";
 import LoadSpinner from "./../components/LoadSpinner";
-let moment = require('moment-timezone');
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
+
+let moment = require("moment-timezone");
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -83,13 +85,18 @@ const Home: NextPage = () => {
       setIsMinting(true);
 
       const durationMinutes = [
-        { key: "5minutes", seconds: 5},
-        { key: "10minutes", seconds: 10},
-        { key: "30minutes", seconds: 30},
+        { key: "5minutes", seconds: 5 },
+        { key: "10minutes", seconds: 10 },
+        { key: "30minutes", seconds: 30 },
       ];
 
-      const expireTime = durationMinutes.find(timeframe => timeframe.key === duration);
-      const expireDate = moment.tz( new Date(), "America/New_York").add(expireTime?.seconds, 'minutes').format('MM/DD/YYYY HH:mma z');
+      const expireTime = durationMinutes.find(
+        (timeframe) => timeframe.key === duration
+      );
+      const expireDate = moment
+        .tz(new Date(), "America/New_York")
+        .add(expireTime?.seconds, "minutes")
+        .format("MM/DD/YYYY HH:mma z");
       const expireMsg = `Access to the unlockables expires at ${expireDate}.`;
 
       description = `${description} ${expireMsg}`;
@@ -126,6 +133,21 @@ const Home: NextPage = () => {
       setIsMinting(false);
     }
   };
+
+  const CROSS_MINT_CLIENT_ID = "33ddd25f-7b60-4bf5-8eb9-dc0af2404e58";
+
+  // mainnet
+  const CROSS_MINT_5MIN_CLIENT_ID = "486a32c2-13f6-4c62-8f19-610993453add";
+  const CROSS_MINT_10MIN_CLIENT_ID = "76162ae0-a2d2-4f7a-9746-5d69560039d7";
+  const CROSS_MINT_30MIN_CLIENT_ID = "7f8dd232-3f2f-4d7a-a8de-ffdebf16eb83";
+
+  // dev
+  // ** you'd need to deploy contract with nfts on dev-net
+  // ** create collection for it on staging.crossmint.io
+  // ** use the client-id here
+  // ** change the environment for CrossmintPayButton to staging
+  // ** can use the 4242 4242 4242 4242 card for dummy payments
+  // const CROSS_MINT_STAGING_CLIENT_ID = "33ddd25f-7b60-4bf5-8eb9-dc0af2404e58";
 
   return (
     <>
@@ -176,9 +198,14 @@ const Home: NextPage = () => {
             </a>
           </div>
           <div className="w-full md:w-1/3 px-2 py-4 rounded align-middle">
-            <h2 className="text-2xl lg:text-3xl underline mb-4 text-right font-serif text-purple-500">Special Promotion</h2>
-            <p className="text-xl lg:text-2xl text-right">Rent access to exclusive BUDDY content.  Enjoy a short film, metaverse 3D model, comic book and concept art.</p>
-          </div>          
+            <h2 className="text-2xl lg:text-3xl underline mb-4 text-right font-serif text-purple-500">
+              Special Promotion
+            </h2>
+            <p className="text-xl lg:text-2xl text-right">
+              Rent access to exclusive BUDDY content. Enjoy a short film,
+              metaverse 3D model, comic book and concept art.
+            </p>
+          </div>
         </div>
         <div className="w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-3">
           <div className="w-full md:w-1/3 mb-8 px-2 rounded">
@@ -197,6 +224,11 @@ const Home: NextPage = () => {
               >
                 Mint Access NFT 5
               </button>
+              <CrossmintPayButton
+                clientId={CROSS_MINT_5MIN_CLIENT_ID}
+                mintConfig={{ type: "candy-machine" }}
+                environment="production"
+              />
             </div>
           </div>
           <div className="w-full md:w-1/3 mb-8 px-2 rounded">
@@ -215,6 +247,11 @@ const Home: NextPage = () => {
               >
                 Mint Access NFT 10
               </button>
+              <CrossmintPayButton
+                clientId={CROSS_MINT_10MIN_CLIENT_ID}
+                mintConfig={{ type: "candy-machine" }}
+                environment="production"
+              />
             </div>
           </div>
           <div className="w-full md:w-1/3 mb-8 px-2 rounded">
@@ -233,6 +270,11 @@ const Home: NextPage = () => {
               >
                 Mint Access NFT 30
               </button>
+              <CrossmintPayButton
+                clientId={CROSS_MINT_30MIN_CLIENT_ID}
+                mintConfig={{ type: "candy-machine" }}
+                environment="production"
+              />
             </div>
           </div>
         </div>
@@ -249,7 +291,10 @@ const Home: NextPage = () => {
             }}
           >
             <div>
-              <label className="bg-gray-900 text-gray-400 text-left" placeholder="Minted">
+              <label
+                className="bg-gray-900 text-gray-400 text-left"
+                placeholder="Minted"
+              >
                 Minted-NFt : {JSON.stringify(mintedNft)}
               </label>
             </div>
