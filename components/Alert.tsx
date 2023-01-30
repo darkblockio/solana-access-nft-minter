@@ -1,9 +1,15 @@
 import { useState } from "react";
-import React from "react";
 
-export default function Alert({ type, message }) {
+type AlertInfo = {
+  type: string;
+  message: string;
+};
+
+export default function Alert(props: AlertInfo) {
   const [isShow, setIsShow] = useState(true);
 
+  const type = props.type;
+  const message = props.message;
   const handleClose = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsShow(false);
