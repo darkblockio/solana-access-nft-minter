@@ -7,7 +7,6 @@ import styles from "../styles/Home.module.css";
 import { useProgram } from "@thirdweb-dev/react/solana";
 import LoadSpinner from "./../components/LoadSpinner";
 import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
-import Alert from "../components/Alert";
 
 let moment = require("moment-timezone");
 
@@ -26,12 +25,8 @@ const Home: NextPage = () => {
 
   const [contractAddress, setContractAddress] = useState(
     "BVXDJVY9HbQRgCSggZdLM2TG9DFVjMjSASoSZrrXgWBi" // update this if wanna change collection
-    // "D2BDntKMDenb8whBkBu4rCvvBAKwApvEeV7n4WPYNkc7"
   );
   const [isMinting, setIsMinting] = useState(false);
-  const [status, setStatus] = useState("");
-  const [message, setMessage] = useState("");
-
   const [mintedNft, setMintedNft] = useState({});
   const wallet = useWallet().publicKey;
   const isConnected = !!wallet;
@@ -126,17 +121,15 @@ const Home: NextPage = () => {
         ],
       });
 
-      setMessage(
-        `Please visit app.darkblock.io to consume your unlockables. ${mint}`
+      alert(
+        `SUCCESS.  Please visit app.darkblock.io to consume your unlockables. ${mint}`
       );
-      setStatus("success");
       setIsMinting(false);
       const nft = await program.get(mint);
       if (nft && nft.metadata && nft.metadata.id) setMintedNft(nft);
     } catch (err: any) {
       console.error(err);
-      setMessage("Error minting NFT! : " + err?.message.substring(0, 200));
-      setStatus("error");
+      alert("Error minting NFT! : " + err?.message);
       setIsMinting(false);
     }
   };
@@ -159,8 +152,6 @@ const Home: NextPage = () => {
   return (
     <>
       <nav className="flex-shrink-0 bg-black">
-        {status && message && <Alert type={status} message={message} />}
-
         <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex items-center px-2 lg:px-0 xl:w-64">
@@ -227,12 +218,11 @@ const Home: NextPage = () => {
               layout="responsive"
             />
             <div>
-              <button
-                className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
-                onClick={mint5MinAccess}
-              >
-                Mint Access NFT 5
-              </button>
+              <CrossmintPayButton
+                clientId={CROSS_MINT_5MIN_CLIENT_ID}
+                mintConfig={{ type: "candy-machine" }}
+                environment="production"
+              />
             </div>
           </div>
           <div className="w-full md:w-1/3 mb-8 px-2 rounded">
@@ -245,12 +235,11 @@ const Home: NextPage = () => {
               layout="responsive"
             />
             <div>
-              <button
-                className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
-                onClick={mint10MinAccess}
-              >
-                Mint Access NFT 10
-              </button>
+              <CrossmintPayButton
+                clientId={CROSS_MINT_10MIN_CLIENT_ID}
+                mintConfig={{ type: "candy-machine" }}
+                environment="production"
+              />
             </div>
           </div>
           <div className="w-full md:w-1/3 mb-8 px-2 rounded">
@@ -263,12 +252,11 @@ const Home: NextPage = () => {
               layout="responsive"
             />
             <div>
-              <button
-                className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
-                onClick={mint30MinAccess}
-              >
-                Mint Access NFT 30
-              </button>
+              <CrossmintPayButton
+                clientId={CROSS_MINT_30MIN_CLIENT_ID}
+                mintConfig={{ type: "candy-machine" }}
+                environment="production"
+              />
             </div>
           </div>
         </div>
