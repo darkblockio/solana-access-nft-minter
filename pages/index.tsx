@@ -20,13 +20,42 @@ const WalletMultiButtonDynamic = dynamic(
 );
 
 const Home: NextPage = () => {
-  // Here's how to get the thirdweb SDK instance const sdk = useSDK(); Here's how
-  // to get a nft collection
+  //!DEVNET NFT DROPS (Collection) WITH CLAIMABLE NFTS
+  //5mins:
+  //7cYJu2he3nfDEgUqhBgWznfMeTjy7iP8a7AwDUkLVSTn
+  //10mins:
+  //8RxE14F9LuXSmE7Q8yE4vhcbZa4ACKuLGVCNibMyPpLn
+  //30mins:
+  //HniCpJWgd2dAmDYZz71uHsr74mf2Nv985QsnRvVc4Egt
 
-  const [contractAddress, setContractAddress] = useState(
-    "BVXDJVY9HbQRgCSggZdLM2TG9DFVjMjSASoSZrrXgWBi" // update this if wanna change collection
-    // "D2BDntKMDenb8whBkBu4rCvvBAKwApvEeV7n4WPYNkc7"
+  //!MAINNET NFT DROPS (Collection) WITH CLAIMABLE NFTS
+  //5mins:
+  //FtymXnSnqEqDkkbjs6r2phAxJDmxqDrAoestVbpySLbi
+  //10mins:
+  //3Bm3Wdd1QgcrSCCpfeTE5kK14ajR48TNzfjZweTQiD8W
+  //30mins:
+  //BWWD4MFNthXmDhdDrbKpuA8RLsxm26eP2w4fdyUJb2pL
+
+  // would just need to update these 3 vars to use new contracts
+  // also update the network in _app.tsx accordingly
+  const FIVE_MINS_CONTRACT_DEVNET =
+    "FtymXnSnqEqDkkbjs6r2phAxJDmxqDrAoestVbpySLbi";
+  const TEN_MINS_CONTRACT_DEVNET =
+    "3Bm3Wdd1QgcrSCCpfeTE5kK14ajR48TNzfjZweTQiD8W";
+  const THRITY_MINS_CONTRACT_DEVNET =
+    "BWWD4MFNthXmDhdDrbKpuA8RLsxm26eP2w4fdyUJb2pL";
+
+  const [contractAddressFive, setContractAddressFive] = useState(
+    FIVE_MINS_CONTRACT_DEVNET
   );
+
+  const [contractAddressTen, setContractAddressTen] = useState(
+    TEN_MINS_CONTRACT_DEVNET
+  );
+  const [contractAddressThrity, setContractAddressThirty] = useState(
+    THRITY_MINS_CONTRACT_DEVNET
+  );
+
   const [isMinting, setIsMinting] = useState(false);
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
@@ -34,16 +63,23 @@ const Home: NextPage = () => {
   const [mintedNft, setMintedNft] = useState({});
   const wallet = useWallet().publicKey;
   const isConnected = !!wallet;
-  const { program, isLoading } = useProgram(contractAddress, "nft-collection");
+
+  const { program: programFive, isLoading: isLoadingFive } = useProgram(
+    contractAddressFive,
+    "nft-drop"
+  );
+  const { program: programTen, isLoading: isLoadingTen } = useProgram(
+    contractAddressTen,
+    "nft-drop"
+  );
+  const { program: programThrity, isLoading: isLoadingThrity } = useProgram(
+    contractAddressThrity,
+    "nft-drop"
+  );
 
   const mint5MinAccess = () => {
     try {
-      mintNft(
-        "Buddy 5 Minutes Access",
-        "This NFT grants the owner 5 minutes of access to unlockable content associated with the BUDDY NFT  After 5 minutes, access will be expired but this NFT will stay in your wallet as a receipt.",
-        "https://arweave.net/3caPXeJc_68rFkVu487RU-_0Vh1YiCEi0_00o3O-kZc",
-        "5minutes"
-      );
+      mintNft(programFive, isLoadingFive);
     } catch (e: any) {
       console.log(e.message);
       alert("Failed To Mint NFT: " + e.message);
@@ -52,12 +88,7 @@ const Home: NextPage = () => {
 
   const mint10MinAccess = () => {
     try {
-      mintNft(
-        "Buddy 10 Minutes Access",
-        "This NFT grants the owner 10 minutes of access to unlockable content associated with the BUDDY NFT  After 10 minutes, access will be expired but this NFT will stay in your wallet as a receipt.",
-        "https://arweave.net/Mslj9-Lvi0QKDbnRrBzghDnBgpik0PD012_wM23xYdo",
-        "10minutes"
-      );
+      mintNft(programTen, isLoadingTen);
     } catch (e: any) {
       console.log(e.message);
       alert("Failed To Mint NFT: " + e.message);
@@ -66,71 +97,25 @@ const Home: NextPage = () => {
 
   const mint30MinAccess = () => {
     try {
-      mintNft(
-        "Buddy 30 Minutes Access",
-        "This NFT grants the owner 30 minutes of access to unlockable content associated with the BUDDY NFT  After 30 minutes, access will be expired but this NFT will stay in your wallet as a receipt.",
-        "https://arweave.net/AZHYy3xjZYvLWYEPJxZi_36G1lX9b-rOf3KDAAQOJ14",
-        "30minutes"
-      );
+      mintNft(programThrity, isLoadingThrity);
     } catch (e: any) {
       console.log(e.message);
       alert("Failed To Mint NFT: " + e.message);
     }
   };
 
-  const mintNft = async (
-    name: string,
-    description: string,
-    fileUrl: string,
-    duration: string
-  ) => {
+  const mintNft = async (program: any, isLoading: boolean) => {
     try {
       if (isLoading) return;
       setIsMinting(true);
 
-      const durationMinutes = [
-        { key: "5minutes", seconds: 5 },
-        { key: "10minutes", seconds: 10 },
-        { key: "30minutes", seconds: 30 },
-      ];
-
-      const expireTime = durationMinutes.find(
-        (timeframe) => timeframe.key === duration
-      );
-      const expireDate = moment
-        .tz(new Date(), "America/New_York")
-        .add(expireTime?.seconds, "minutes")
-        .format("MM/DD/YYYY HH:mma z");
-      const expireMsg = `Access to the unlockables expires at ${expireDate}.`;
-
-      description = `${description} ${expireMsg}`;
-
-      const mint = await program.mint({
-        name,
-        description,
-        image: fileUrl,
-        properties: [
-          {
-            trait_type: "content-nft",
-            value: "FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ:Solana",
-          },
-          {
-            trait_type: "monetization-type",
-            value: `rental:${duration}`,
-          },
-          {
-            trait_type: "creation-date",
-            value: `${Math.round(Date.now() / 1000)}`,
-          },
-        ],
-      });
-
+      const mint = await program.claim(1);
       setMessage(
-        `Please visit app.darkblock.io to consume your unlockables. ${mint}`
+        `Please visit app.darkblock.io to consume your unlockables. ${mint[0]}`
       );
       setStatus("success");
       setIsMinting(false);
-      const nft = await program.get(mint);
+      const nft = await program.get(mint[0]);
       if (nft && nft.metadata && nft.metadata.id) setMintedNft(nft);
     } catch (err: any) {
       console.error(err);
