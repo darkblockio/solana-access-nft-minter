@@ -1,7 +1,6 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useProgram } from "@thirdweb-dev/react/solana";
@@ -180,94 +179,82 @@ const Home: NextPage = () => {
       </nav>
 
       <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-        <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-3 justify-center items-center">
-          <div className="w-full md:w-1/3 px-2 rounded">
-            <Image
-              className="mx-auto mt-0 mb-8 md:mt-8 md:mb-0"
+        <div className="w-full mx-auto my-12 flex flex-wrap overflow-hidden grid-cols-4 justify-center items-center h-48">
+          <div className="w-full h-48 md:w-1/4 px-2 rounded">
+            <img
+              className="mx-auto h-48 object-contain"
               src="/DARKBLOCKSTER.svg"
               alt="Darkblockster"
-              width={400}
-              height={300}
-              layout="responsive"
             />
           </div>
-          <div className="w-full md:w-1/3 px-2 rounded">
-            <a
-              className="cursor-pointer"
-              href="https://app.darkblock.io/platform/sol/nft/FbNXShA3EPQawwSMLfHGcHvSyNZfti8taCzTxNBtjXDZ"
-            >
-              <Image
-                className="mx-auto img-responsive"
-                src="/BUDDY.png"
-                alt="BUDDY NFT"
-                width={680}
-                height={400}
-                layout="responsive"
-              />
-            </a>
-          </div>
-          <div className="w-full md:w-1/3 px-2 py-4 rounded align-middle">
-            <h2 className="text-2xl lg:text-3xl underline mb-4 text-right font-serif text-purple-500">
-              Special Promotion
+
+          <div className="w-full md:w-3/4 px-2 py-4 rounded align-middle">
+            <h2 className="text-xl lg:text-3xl mb-4 text-right font-serif text-purple-500">
+              Welcome to Darkblockster.  Content is King.
             </h2>
-            <p className="text-xl lg:text-2xl text-right">
-              Rent access to exclusive BUDDY content. Enjoy a short film,
-              metaverse 3D model, comic book and concept art.
+            <p className="text-xl lg:ml-8 lg:text-xl text-right">
+              Keep your premium collection exclusive and reward owners to grow its value. Offer limited-time access to content to increase audience engagement and exposure. By balancing exclusivity and accessibility, you can maximize the value of your premium content.
             </p>
           </div>
         </div>
-        <div className="w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-3">
-          <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-            <Image
-              className="mx-auto img-responsive"
+        <div className="w-full mx-auto mb-12 flex flex-wrap overflow-hidden grid-cols-4">
+          <div className="w-full md:w-1/4 mb-8 px-2 rounded">
+            <img
+              className="mx-auto h-48 img-responsive"
+              src="/BUDDY.png"
+              alt="BUDDY NFT"
+            />
+            <div>
+              <button
+                className="bg-gray-500 w-2/3 mx-auto rounded mt-2 px-2 py-2"
+                
+              >
+                100,000 SOL
+              </button>
+            </div>
+          </div>
+          <div className="w-full md:w-1/4 mb-8 px-2 rounded">
+            <img
+              className="mx-auto h-48 img-responsive"
               src="/5min.jpg"
               alt="5 Minute Access"
-              width={680}
-              height={400}
-              layout="responsive"
             />
             <div>
               <button
-                className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
+                className="bg-purple-500 w-2/3 mx-auto rounded mt-2 px-2 py-2"
                 onClick={mint5MinAccess}
               >
-                Mint Access NFT 5
+                Mint NFT 5
               </button>
             </div>
           </div>
-          <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-            <Image
-              className="mx-auto img-responsive"
+          <div className="w-full md:w-1/4 mb-8 px-2 rounded">
+            <img
+              className="h-48 mx-auto img-responsive"
               src="/10min.jpg"
               alt="10 Minute Access"
-              width={680}
-              height={400}
-              layout="responsive"
             />
             <div>
               <button
-                className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
+                className="bg-purple-500 w-2/3 mx-auto rounded mt-2 px-2 py-2"
                 onClick={mint10MinAccess}
               >
-                Mint Access NFT 10
+                Mint NFT 10
               </button>
             </div>
           </div>
-          <div className="w-full md:w-1/3 mb-8 px-2 rounded">
-            <Image
-              className="mx-auto img-responsive"
+          <div className="w-full md:w-1/4 mb-8 px-2 rounded">
+            <img
+              className="mx-auto h-48 img-responsive"
               src="/30min.jpg"
               alt="30 Minute Access"
-              width={680}
-              height={400}
-              layout="responsive"
             />
             <div>
               <button
-                className="bg-purple-500 w-full rounded mt-2 px-2 py-2"
+                className="bg-purple-500 w-2/3 mx-auto rounded mt-2 px-2 py-2"
                 onClick={mint30MinAccess}
               >
-                Mint Access NFT 30
+                Mint NFT 30
               </button>
             </div>
           </div>
