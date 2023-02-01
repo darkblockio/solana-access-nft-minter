@@ -110,16 +110,14 @@ const Home: NextPage = () => {
       setIsMinting(true);
 
       const mint = await program.claim(1);
-      setMessage(
-        `Please visit app.darkblock.io to consume your unlockables. ${mint[0]}`
-      );
+      setMessage(`Please visit app.darkblock.io to consume your unlockables.`);
       setStatus("success");
       setIsMinting(false);
       const nft = await program.get(mint[0]);
       if (nft && nft.metadata && nft.metadata.id) setMintedNft(nft);
     } catch (err: any) {
       console.error(err);
-      setMessage("Error minting NFT! : " + err?.message.substring(0, 200));
+      setMessage("there was an error while minting nft!");
       setStatus("error");
       setIsMinting(false);
     }
@@ -175,10 +173,13 @@ const Home: NextPage = () => {
 
           <div className="w-full md:w-3/4 px-2 py-4 rounded align-middle">
             <h2 className="text-xl lg:text-3xl mb-4 text-right font-serif text-purple-500">
-              Welcome to Darkblockster.  Content is King.
+              Welcome to Darkblockster. Content is King.
             </h2>
             <p className="text-xl lg:ml-8 lg:text-xl text-right">
-              Keep your premium collection exclusive and reward owners to grow its value. Offer limited-time access to content to increase audience engagement and exposure. By balancing exclusivity and accessibility, you can maximize the value of your premium content.
+              Keep your premium collection exclusive and reward owners to grow
+              its value. Offer limited-time access to content to increase
+              audience engagement and exposure. By balancing exclusivity and
+              accessibility, you can maximize the value of your premium content.
             </p>
           </div>
         </div>
@@ -190,10 +191,7 @@ const Home: NextPage = () => {
               alt="BUDDY NFT"
             />
             <div>
-              <button
-                className="bg-gray-500 w-2/3 mx-auto rounded mt-2 px-2 py-2"
-                
-              >
+              <button className="bg-gray-500 w-2/3 mx-auto rounded mt-2 px-2 py-2">
                 100,000 SOL
               </button>
             </div>
@@ -256,14 +254,14 @@ const Home: NextPage = () => {
               wordWrap: "normal",
             }}
           >
-            <div>
+            {/* <div>
               <label
                 className="bg-gray-900 text-gray-400 text-left"
                 placeholder="Minted"
               >
                 Minted-NFt : {JSON.stringify(mintedNft)}
               </label>
-            </div>
+            </div> */}
           </div>
         )}{" "}
       </div>
